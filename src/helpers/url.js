@@ -1,0 +1,1 @@
+export const convertSearchParamsToObject = (query) => Object.fromEntries(new URLSearchParams(decodeURI(query)));
