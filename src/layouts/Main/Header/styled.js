@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // Styles
 import device from 'styles/devices';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
