@@ -1,5 +1,5 @@
 // Absolute imports
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Styles
 import { 
@@ -20,6 +20,16 @@ const Modal = ({
   onClose,
   children,
 }) => {
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <StyledModal
       id={id}

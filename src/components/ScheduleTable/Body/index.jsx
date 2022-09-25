@@ -38,15 +38,18 @@ const ScheduleBody = ({ lessonIds }) => {
             >
             <LessonNumber>{index + 1}.</LessonNumber>
             <LessonInfo>
+            <Tooltip overlay={lesson.name}>
               <span>{lesson.name}</span>
+            </Tooltip>
               {lesson.tutor ? (<span>{lesson.tutor}</span>) : null}
             </LessonInfo>
             <LessonLinks>
               {lesson.links.map((link) => (
-                <a key={link.name} href={link.url} target="_blank" rel="noreferrer">
-                  <img src={link.src} alt={link.name}/>
-                </a>
-              ))}
+                link.url 
+                ? (<a key={link.name} href={link.url} target="_blank" rel="noreferrer">
+                    <img src={link.src} alt={link.name}/>
+                  </a>)
+                : null))}
             </LessonLinks>
             <LessonTime>{LESSONS_DURATION[index]}</LessonTime>
           </LessonWrapper>

@@ -1,6 +1,7 @@
 // Absolute imports
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import SwitchWeeksSlider from 'react-slick';
 
 // Components
 import Layout from 'layouts/Main';
@@ -14,15 +15,20 @@ import { getScheduleByGroupName } from 'requests/schedule';
 import { getInitialDaysOfWeeks, getWeekWordFromNumber, getWeekNumber } from 'helpers/schedule';
 
 // Styles
-import { TableTitle, PageWrapper, WeeksContainer } from './styled'; 
+import { 
+  TableTitle,
+  PageWrapper,
+  WeeksContainer,
+  SwitchWeeksContainer,
+  SwitchWeeksButton,
+  NotFoundTitle,
+} from './styled'; 
 
 
 const Schedule = () => {
   const [schedule, setSchedule] = useState(null);
   const [daysOfWeeks, setDaysOfWeeks] = useState(getInitialDaysOfWeeks());
   const { groupName: groupNameParam, week: weekParam } = useParams();
-
-  const navigate = useNavigate();
 
   const [isCurrentWeekSecond] = useState(getWeekNumber() === 2);
 
@@ -56,13 +62,29 @@ const Schedule = () => {
       }}/>
     ));
 
+  const settings = {
+    infinite: true,
+    arrows: true,
+    dots: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 500,
+    adaptiveHeight: true,
+    // If weekParam undefined return '2' - index of slider element
+    initialSlide: !weekParam ? 2 : weekParam - 1,
+  };
+
+  if (!schedule) return (
+    <Layout id="schedule">
+      <NotFoundTitle>Schedule not found</NotFoundTitle>
+    </Layout>)
 
   return (
     <Layout id="schedule">
       <PageWrapper>
         <TableTitle>
           {weekParam
-            ? `Schedule of ${getWeekWordFromNumber(weekParam)}`
+            ? `Schedule Of ${getWeekWordFromNumber(weekParam)}`
             : 'Schedules'}
         </TableTitle>
         {weekParam ? (
@@ -77,9 +99,13 @@ const Schedule = () => {
             <ScheduleSlider>{renderSchedule(schedule, changeWeeksOrder(2))}</ScheduleSlider>
           </WeeksContainer>
         )}
-        <button onClick={() => navigate(`/schedule/${groupNameParam}/weeks/${1}`)}>Go-1</button>
-        <button onClick={() => navigate(`/schedule/${groupNameParam}/weeks/${2}`)}>Go-2</button>
-        <button onClick={() => navigate(`/schedule/${groupNameParam}/weeks/`)}>Weeks</button>
+        <SwitchWeeksContainer>
+          <SwitchWeeksSlider {...settings}>
+            <SwitchWeeksButton to={`/schedule/${groupNameParam}/weeks/${1}`}>Week 1</SwitchWeeksButton>
+            <SwitchWeeksButton to={`/schedule/${groupNameParam}/weeks/${2}`}>Week 2</SwitchWeeksButton>
+            <SwitchWeeksButton to={`/schedule/${groupNameParam}/weeks`}>Weeks</SwitchWeeksButton>
+          </SwitchWeeksSlider>
+        </SwitchWeeksContainer>
       </PageWrapper>
     </Layout>
   );

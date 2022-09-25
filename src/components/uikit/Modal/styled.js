@@ -8,6 +8,12 @@ import { getControlButtonColorByType } from 'helpers/modal';
 export const StyledModal = Modal.styled`
   width: 100%;
   max-width: 850px;
+  height: 548px;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   border-radius: 18px;
   background-color: ${({ theme: { colors: { lightGay } } }) => lightGay};
   font-family: ${({ theme: { fonts: { montserrat } } }) => montserrat};
@@ -16,6 +22,7 @@ export const StyledModal = Modal.styled`
 export const Header = styled.div`
   width: 100%;
   height: 45px;
+  align-self: flex-start;
   display: flex;
   align-items: center;
   padding: 35px 15px;
@@ -53,7 +60,12 @@ export const ControlButton = styled.button`
 
 export const Body = styled.div`
   width: 100%;
+  height: inherit;
+  margin-top: 15px;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding: 40px;
+  overflow-y: scroll;
 `;
 

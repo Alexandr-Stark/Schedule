@@ -6,5 +6,5 @@ export const Container = styled.main`
   background-color: white;
   font-family: ${({ theme: { fonts: { montserrat } } }) => montserrat};
   min-height: 100vh;
-  padding: 0px 16px 40px;
+  padding: 70px 16px 40px;
 `;

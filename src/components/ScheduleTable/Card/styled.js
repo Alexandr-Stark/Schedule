@@ -1,10 +1,18 @@
-// absolute imports
+// Absolute imports
 import styled from 'styled-components';
+
+// Styles
+import device from 'styles/devices';
 
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  min-width: 340px;
+  min-width: 100%;
+
+  @media ${device.tabletL} {
+    min-width: 340px;
+  } 
+
   height: 250px;
   border-radius: 18px;
   background-color: ${({ theme: { colors: { white } } }) => white};

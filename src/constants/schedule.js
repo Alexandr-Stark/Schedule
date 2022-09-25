@@ -14,14 +14,25 @@ export const LESSONS_DURATION = [
   '13:00 - 14:20',
   '14:40 - 16:00',
   '16:10 - 17:30',
-]
+];
 
+// Add your group {..., group-name: {...}}
+export const GROUPS = {
+  '443-1': { name: '443-1' },
+  '443-2': { name: '443-2' },
+  '443-3-1': { name: '443-3-1' },
+  '443-3-2': { name: '443-3-2' },
+  // Add your group here
+};
+
+// Add your lesson [..., {...}]
+// Note: add unique number type 'id' (use incremental id)
 export const LESSONS = [
   {
     id: 0,
     type: 0, // 0 - seminar, 1 - practical
     name: 'Організація наукових досліджень з основами інтелектуальної власності',
-    tutor: '',
+    tutor: 'Ушенко Ю.О.',
     links: [
       { ...GOOGLE_MEET, url: '' },
       { ...MOODLE, url: '' }
@@ -33,7 +44,7 @@ export const LESSONS = [
     name: 'Безпека програм та даних',
     tutor: 'Янушевський С.В.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: ' https://meet.google.com/sye-jukd-bvv' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -41,29 +52,29 @@ export const LESSONS = [
     id: 2,
     type: 0, // 0 - seminar, 1 - practical
     name: 'Філософія',
-    tutor: '',
+    tutor: 'Балінченко С.П.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
-      { ...MOODLE, url: '' }
+      { ...GOOGLE_MEET, url: 'meet.google.com/ujc-iihd-rfc' },
+      { ...MOODLE, url: 'https://moodle.chnu.edu.ua/course/view.php?id=1476' }
     ],
   },
   {
     id: 3,
     type: 0, // 0 - seminar, 1 - practical
     name: 'English for IT',
-    tutor: '',
+    tutor: 'Тоненчук Т.В.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
-      { ...MOODLE, url: '' }
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/put-ejti-pbn' },
+      { ...MOODLE, url: 'https://moodle.chnu.edu.ua/course/view.php?id=3244' }
     ],
   },
   {
     id: 4,
     type: 0, // 0 - seminar, 1 - practical
     name: 'Технології обробки Big Data',
-    tutor: '',
+    tutor: 'Талах М.В.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/jxc-dcfp-xod' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -71,9 +82,9 @@ export const LESSONS = [
     id: 5,
     type: 0, // 0 - seminar, 1 - practical
     name: 'Паралельне програмування та розподілені системи',
-    tutor: '',
+    tutor: 'Горський М.П.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/agj-wnkz-tho' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -81,9 +92,9 @@ export const LESSONS = [
     id: 6,
     type: 1, // 0 - seminar, 1 - practical
     name: 'Паралельне програмування та розподілені системи',
-    tutor: '',
+    tutor: 'Горський М.П.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/agj-wnkz-tho' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -91,9 +102,9 @@ export const LESSONS = [
     id: 7,
     type: 0, // 0 - seminar, 1 - practical
     name: 'Безпека web-додатків',
-    tutor: '',
+    tutor: 'Прохоров Г.В',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/bje-smbu-byx' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -101,9 +112,9 @@ export const LESSONS = [
     id: 8,
     type: 1, // 0 - seminar, 1 - practical
     name: 'Безпека web-додатків',
-    tutor: '',
+    tutor: 'Прохоров Г.В.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/bje-smbu-byx' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -113,17 +124,17 @@ export const LESSONS = [
     name: 'Безпека програм та даних',
     tutor: 'Остапов С.Е.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
-      { ...MOODLE, url: '' }
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/hjg-oqip-nco' },
+      { ...MOODLE, url: 'https://moodle.chnu.edu.ua/course/view.php?id=768' }
     ],
   },
   {
     id: 10,
     type: 1, // 0 - seminar, 1 - practical
     name: 'Технології обробки Big Data',
-    tutor: '',
+    tutor: 'Талах М.В.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
+      { ...GOOGLE_MEET, url: 'https://meet.google.com/jxc-dcfp-xod' },
       { ...MOODLE, url: '' }
     ],
   },
@@ -131,18 +142,20 @@ export const LESSONS = [
     id: 11,
     type: 1, // 0 - seminar, 1 - practical
     name: 'Організація наукових досліджень з основами інтелектуальної власності',
-    tutor: '',
+    tutor: 'Ушенко Ю.О.',
     links: [
       { ...GOOGLE_MEET, url: '' },
       { ...MOODLE, url: '' }
     ],
   },
+  // Add your lesson here
 ];
 
+// Add your schedule [..., {...}]
 export const SCHEDULES = [
   {
     id: 0,
-    groupName: '443-2',
+    groupName: GROUPS['443-2'].name,
     schedules: [
       [
         {
@@ -191,4 +204,5 @@ export const SCHEDULES = [
       ],
     ],
   },
+  // Add your schedule here
 ];
