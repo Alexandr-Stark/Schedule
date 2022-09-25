@@ -48,5 +48,6 @@ export const GroupsContainer = styled.ul`
 
   @media ${device.mobile} {
     justify-content: center;
+    overflow-x: hidden;
   }
 `;
