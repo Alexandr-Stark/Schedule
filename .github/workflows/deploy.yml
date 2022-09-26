@@ -5,24 +5,31 @@ on:
       - test
 
 jobs:
-  build-and-deploy:
+  build ⚙️:
+    runs-on: ubuntu-latest
     env: 
       CI: false
-    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
         with:
-          node-version: 16
+          node-version: ${{ matrix.node-version }}
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Install and Build 🔧
         run: | 
           npm i --legacy-peer-deps
           npm run build
 
+  deploy 🚀:
+    needs: build ⚙️
+    runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    steps:
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: build # The folder the action should deploy.
-          branch: gh-pages
+          uses: JamesIves/github-pages-deploy-action@v4
+          with:
+            folder: build # The folder the action should deploy.
+            branch: gh-pages
