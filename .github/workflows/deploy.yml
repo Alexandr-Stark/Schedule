@@ -1,29 +1,29 @@
 name: Build and Deploy
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-     strategy:
+    strategy:
       matrix:
-        node-version: [16.x, 18.x]
-
+        node-version: [16]
     steps:
-    - uses: actions/checkout@v3
-    - name: Test using Node.js ${{ matrix.node-version }}
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+
+    - name: Setup 📁 using Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-      - run: npm i --legacy-peer-deps
-      - run: npm test
+    - name: Install and Build 🔧
+      run: |
+          npm config set legacy-peer-deps true
+          npm ci
+          npm run build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: build # The folder the action should deploy.
