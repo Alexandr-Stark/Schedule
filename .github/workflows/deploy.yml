@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - test
-env: 
- CI: false
- 
+
 jobs:
   build-and-deploy:
+    env: 
+      CI: false
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
@@ -25,3 +25,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build # The folder the action should deploy.
+          branch: gh-pages
