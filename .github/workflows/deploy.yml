@@ -5,23 +5,13 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16]
     steps:
     - name: Checkout 🛎️
       uses: actions/checkout@v3
 
-    - name: Setup 📁 using Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-
     - name: Install and Build 🔧
-      run: |
-          npm config set legacy-peer-deps true
-          npm ci
-          npm run build
+    - run: npm i --legacy-peer-deps
+    - run: npm run build
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
