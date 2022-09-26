@@ -5,7 +5,7 @@ on:
       - test
 
 jobs:
-  build ⚙️:
+  build:
     runs-on: ubuntu-latest
     env: 
       CI: false
@@ -25,8 +25,8 @@ jobs:
           npm i --legacy-peer-deps
           npm run build
 
-  deploy 🚀:
-    needs: build ⚙️
+  deploy:
+    needs: build
 
     runs-on: ubuntu-latest
 
