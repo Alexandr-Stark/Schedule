@@ -15,7 +15,7 @@ import Schedule from 'pages/Schedule';
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={window.location.pathname || ''}>
       <Routes>
         <Route path="/schedule">
           <Route path=":groupName/weeks" element={<Schedule/>}>
