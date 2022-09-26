@@ -6,7 +6,7 @@ import { Wrapper } from './styled';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return (<Wrapper>{`Copyright © ${currentYear} Stark Ind. All rights reserved.`}</Wrapper>)
+  return (<Wrapper>{`Copyright © ${currentYear} Alexandr Stark Ind. All rights reserved.`}</Wrapper>)
 };
 
 export default Footer;
