@@ -30,12 +30,12 @@ export const GROUPS = {
 export const LESSONS = [
   {
     id: 0,
-    type: 0, // 0 - seminar, 1 - practical
+    type: 0, // 0 - seminar, 1 - practical 
     name: 'Організація наукових досліджень з основами інтелектуальної власності',
     tutor: 'Ушенко Ю.О.',
     links: [
-      { ...GOOGLE_MEET, url: '' },
-      { ...MOODLE, url: '' }
+      { ...GOOGLE_MEET, url: '' }, // add lesson link , url: 'https://some-link'
+      { ...MOODLE, url: '' } // add lesson link , url: 'https://some-link'
     ],
   },
   {
@@ -155,12 +155,17 @@ export const LESSONS = [
 export const SCHEDULES = [
   {
     id: 0,
-    groupName: GROUPS['443-2'].name,
-    schedules: [
+    groupName: GROUPS['443-2'].name, // use your group from added GROUPS
+    schedules: [ // Array of Arrays: 
+    // 0 element - schedule for 1 week
+    // 1 element - schedule for 2 week
       [
         {
           day: 'Понеділок',
-          lessonIds: [null, null, null, null, 8, 5],
+          lessonIds: [null, null, null, null, 8, 5], // lessons count from 0 as array elements
+          // means 0 index - it's 1 lesson, 1 index - it's 2 lesson and ect.
+          // null if lesson not exists 
+          // number id (from export const LESSONS = [...]) if lesson exists
 
         },
         {

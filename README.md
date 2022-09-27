@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+<h1 align="center"> Schedule 📅</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+View your schedule *v1.0.0* 💾.
 
-## Available Scripts
+# How To Use 🖱️
 
-In the project directory, you can run:
+ - [x] **1.** Open [**Web App** 🚀](https://alexandr-stark.github.io/Schedule/)
+ - [x] **2.** Choose your **Group 📒**
+ - [x] **3.** Choose **Week(s)** and **Day**  📅
 
-### `npm start`
+>**Note**: *Colored lines* in the right position from the lesson, indicate ***Type of Lesson***: 
+><p>🟩 - practical<br>
+>🟨 - seminar</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Congratulations, now you are in the know 🎉. But if you want to expand your schedule for your group or any other else, time to become a contributor to this repo 😻.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# How To Contribute ⚙️
 
-### `npm test`
+### Start Application
+ - [x] **1.** `Node.js` **>=** `16`
+ - [x] **2.** In the project directory, you can run:
+```sh
+npm i
+npm run start
+```
+ ---
+ 
+### Git Flow
+ - [x] **1.** Switch to the `main` branch: 
+   `git checkout main`
+ 
+ - [x] **2.** Create new branch:
+  
+ - **Branch naming**: `feature/{PROJECTPREFIX}-{group-number}_{short-description}`
+ - **Example**: `feature/SDL-441-1_add-schedule`
+ 
+  `git checkout -b feature/{PROJECTPREFIX}-{group-number}_{short-description}`
+  
+ - [x] **3.** Commit and Push:
+> **Note**: Before this step please read next paragraph **[Add New Schedule for Group](#add-new-schedule-for-group)**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ - **Commit naming**: `{PROJECTPREFIX}-{group-number} short description`
+ - **Example**: `SDL-441-1 add schedule`
 
-### `npm run build`
+ ```sh
+git add src/constants/schedule.js
+git commit -m "SDL-441-1 add schedule"
+git push origin feature/SDL-441-1_add-schedule
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ - [x] **4**. Create Pull Request:
+   - Create pull request https://github.com/Alexandr-Stark/Schedule/pulls to the `main` branch. Waits for approve.
+ ---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Add New Schedule for Group
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> For adding schedule to new the group go to file under the path: `src/constants/schedule.js`
+>**Follows to the instruction in code**:
+>
+>>**1 Step** - add group if not exists:
+>```sh
+>// Add your group {..., group-name: {...}}
+>export  const  GROUPS = {
+>'443-1': { name:  '443-1' },
+>'443-2': { name:  '443-2' },
+>'443-3-1': { name:  '443-3-1' },
+>'443-3-2': { name:  '443-3-2' },
+>// Add your group here
+>};
+>```
+>>**2 Step** - add lesson if not exists:
+>```sh// Add your lesson [..., {...}]
+>// Note: add unique number type 'id' (use incremental id)
+>export  const  LESSONS = [
+>{
+>   id:  0,
+>   type:  0, // 0 - seminar, 1 - practical
+>   name:  'Організація наукових досліджень з основами інтелектуальної >власності',
+>   tutor:  'Ушенко Ю.О.',
+>   links: [
+>    { ...GOOGLE_MEET, url:  '' }, // add lesson link , url: 'https://some-link'
+>   { ...MOODLE, url:  '' } // add lesson link , url: 'https://some-link'
+>   ],
+>},
+>{ ... You lesson with the same structure }
+>];
+>```
+>>**3 Step** - add schedule if not exists:
+>```sh
+>// Add your schedule [..., {...}]
+>export  const  SCHEDULES = [
+>   {
+>      id:  0,
+>      groupName:  GROUPS['443-2'].name, // use your group from added 
+>      GROUPS
+>      { ... See comments in code... }
+>   },
+>   // Add your schedule here
+> ];
+>```
+ 
+## Thanks 🤝
+You are all done. So if you have a questions, please contact me.
